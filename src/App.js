@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import Header from './components/Header/Header';
-import { Router, Switch } from 'react-router-dom';
-import landingRoute from './routes/landingRoute/landingRoute';
+import { Route, Switch } from 'react-router-dom';
+import LandingRoute from './routes/LandingRoute/LandingRoute';
+import AdoptionRoute from './routes/AdoptionRoute/AdoptionRoute';
 
 export default class App extends Component {
   render() {
@@ -11,7 +12,16 @@ export default class App extends Component {
         <header className="App__header">
           <Header />
         </header>
-        <main></main>
+        <main>
+          <Switch>
+            <Route exact path={'/'}>
+              <LandingRoute />
+            </Route>
+            <Route exact path={'/adopt'}>
+              <AdoptionRoute />
+            </Route>
+          </Switch>
+        </main>
         <footer></footer>
       </div>
     );
