@@ -54,22 +54,27 @@ export default class AdoptionPage extends Component {
       currentCatForAdoption,
       currentDogForAdoption,
     } = this.state;
-    console.log(this.state);
     return (
       <>
         <div className="animal__page">
           <p>Current Dog waiting to be adopted : </p>
-          <AnimalInfo animal={currentDog} />
+          <AnimalInfo
+            animal={currentDog}
+            onImageClick={this.props.onImageClick}
+          />
         </div>
         <div>
           <p>Current Cat waiting to be adopted : </p>
-          <AnimalInfo animal={currentCat} />
+          <AnimalInfo
+            animal={currentCat}
+            onImageClick={this.props.onImageClick}
+          />
         </div>
         <div>
           <p>Current Dog you can Adopt! : </p>
           <AnimalInfo
             animal={currentDogForAdoption}
-            onImageClick={this.props.onImageClick}
+            onImageClick={(this.props.onImageClick, currentDogForAdoption)}
           />
         </div>
         <div>
@@ -78,9 +83,6 @@ export default class AdoptionPage extends Component {
             animal={currentCatForAdoption}
             onImageClick={this.props.onImageClick}
           />
-        </div>
-        <div>
-          <p>Hello</p>
         </div>
       </>
     );

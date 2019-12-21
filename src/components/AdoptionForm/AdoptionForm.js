@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
+import AdoptionApiService from '../../services/adoption-api-service';
 
 export default class AdoptionForm extends Component {
+  onRegisterSumbit = () => {
+    //put shit in here which will respond that the user has correctly inputted information and has been placed in a queue
+  };
   render() {
+    let { imageURL, imageDesc, name, sex, age, story } = this.props.animal;
     return (
       <>
         <div>
-          <img src={this.props.imageURL} alt={this.props.imageDesc}></img>
-          <h2>{this.props.name}</h2>
-          <p>{this.props.sex}</p>
-          <p>{this.props.age} Years Old</p>
-          <p>{this.props.story}</p>
+          <img src={imageURL} alt={imageDesc}></img>
+          <h2>{name}</h2>
+          <p>{sex}</p>
+          <p>{age} Years Old</p>
+          <p>{story}</p>
         </div>
         <div>
           <h2>Fill out this form to sign up for adoption !</h2>

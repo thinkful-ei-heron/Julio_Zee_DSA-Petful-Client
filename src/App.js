@@ -19,7 +19,7 @@ export default class App extends Component {
             <Route exact path={'/adopt'} component={AdoptionRoute}></Route>
             <Route
               path={'/adopt/form/:animalId'}
-              component={AdoptionFormRoute}
+              renderer={props => <AdoptionFormRoute {...props} />}
             ></Route>
           </Switch>
         </main>
