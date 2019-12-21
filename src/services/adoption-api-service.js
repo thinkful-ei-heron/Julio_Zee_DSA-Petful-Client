@@ -3,7 +3,7 @@ import config from '../config';
 const adoptionApiService = {
   adoptCat() {
     return fetch(`${config.API_ENDPOINT}/cats`, {
-      method: 'GET',
+      method: 'DELETE',
       headers: {
         'content-type': 'application/json',
       },
@@ -13,7 +13,7 @@ const adoptionApiService = {
   },
   adoptDog() {
     return fetch(`${config.API_ENDPOINT}/dogs`, {
-      method: 'GET',
+      method: 'DELETE',
       headers: {
         'content-type': 'application/json',
       },
@@ -41,28 +41,8 @@ const adoptionApiService = {
       !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
     );
   },
-  // adoptDog() {
-  //   return fetch(`${config.API_ENDPOINT}/dogs`, {
-  //     method: 'GET',
-  //     headers: {
-  //       'content-type': 'application/json',
-  //     },
-  //   }).then(res =>
-  //     !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
-  //   );
-  // },
-  // adoptCat() {
-  //   return fetch(`${config.API_ENDPOINT}/cats`, {
-  //     method: 'GET',
-  //     headers: {
-  //       'content-type': 'application/json',
-  //     },
-  //   }).then(res =>
-  //     !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
-  //   );
-  // },
   showListOfHumans() {
-    return fetch(`${config.API_ENDPOINT}/humans`, {
+    return fetch(`${config.API_ENDPOINT}/humans/all`, {
       method: 'GET',
       headers: {
         'content-type': 'application/json',

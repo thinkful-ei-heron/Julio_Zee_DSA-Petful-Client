@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import adoptionApiService from '../../services/adoption-api-service';
+import { Link } from 'react-router-dom';
+import AdoptionForm from '../AdoptionForm/AdoptionForm';
+import AnimalInfo from './AnimalInfo';
+import './AdoptionPage.css';
 
 export default class AdoptionPage extends Component {
   state = {
     listOfDogs: {},
     listOfCats: {},
-    currentAnimal: {},
     currentDog: {},
     currentCat: {},
     currentDogForAdoption: {},
@@ -20,12 +23,12 @@ export default class AdoptionPage extends Component {
 
   updateAdoptionInfo(data) {
     this.setState({
-      listOfDogs: this.createList(data.catQueue, []),
-      listOfcats: this.createList(data.dogQueue, []),
-      currentDog: data.dogQueue.first,
-      currentCat: data.catQueue.first,
-      currentDogForAdoption: data.dogQueue.last,
-      currentCatForAdoption: data.catQueue.last,
+      listOfCats: this.createList(data.catQueue, []),
+      listOfDogs: this.createList(data.dogQueue, []),
+      currentDog: data.dogQueue.first.data,
+      currentCat: data.catQueue.first.data,
+      currentDogForAdoption: data.dogQueue.last.data,
+      currentCatForAdoption: data.catQueue.last.data,
     });
   }
 
@@ -51,19 +54,33 @@ export default class AdoptionPage extends Component {
       currentCatForAdoption,
       currentDogForAdoption,
     } = this.state;
+    console.log(this.state);
     return (
       <>
-        <div>
-          <p>{currentCat.name}</p>
+        <div className="animal__page">
+          <p>Current Dog waiting to be adopted : </p>
+          <AnimalInfo animal={currentDog} />
         </div>
         <div>
-          <p>placeholder for current pet waiting to be adopted</p>
+          <p>Current Cat waiting to be adopted : </p>
+          <AnimalInfo animal={currentCat} />
         </div>
         <div>
-          <p>placeholder for list of humans waiting in line</p>
+          <p>Current Dog you can Adopt! : </p>
+          <AnimalInfo
+            animal={currentDogForAdoption}
+            onImageClick={this.props.onImageClick}
+          />
         </div>
         <div>
-          <p>placeholder for list of pets waiting in line</p>
+          <p>Current Cat you can Adopt Today! : </p>
+          <AnimalInfo
+            animal={currentCatForAdoption}
+            onImageClick={this.props.onImageClick}
+          />
+        </div>
+        <div>
+          <p>Hello</p>
         </div>
       </>
     );
