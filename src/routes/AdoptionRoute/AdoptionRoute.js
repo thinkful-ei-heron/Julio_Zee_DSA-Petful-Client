@@ -5,13 +5,15 @@ import AdoptionForm from '../../components/AdoptionForm/AdoptionForm';
 export default class AdoptionRoute extends Component {
   state = {
     animalClicked: {},
-    clicked: false,
+    clicked: false
+  };
+  onSubmitSuccess = () => {
+    this.props.history.push('/success');
   };
   onImageClick = animal => {
-    //let path = `/adopt/form/${animal.id}`;
     this.setState({
       animalClicked: animal,
-      clicked: true,
+      clicked: true
     });
   };
   render() {
@@ -24,7 +26,10 @@ export default class AdoptionRoute extends Component {
         {this.state.clicked === false ? (
           <AdoptionPage onImageClick={this.onImageClick} />
         ) : (
-          <AdoptionForm animal={this.state.animalClicked} />
+          <AdoptionForm
+            animal={this.state.animalClicked}
+            onSubmitSuccess={this.onSubmitSuccess}
+          />
         )}
       </>
     );

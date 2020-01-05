@@ -2,21 +2,22 @@ import config from '../config';
 
 const adoptionApiService = {
   adoptCat() {
-    return fetch(`${config.API_ENDPOINT}/cats`, {
+    return fetch(`${config.API_ENDPOINT}/pets/cats`, {
       method: 'DELETE',
       headers: {
-        'content-type': 'application/json',
-      },
-    }).then(res =>
-      !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
-    );
+        'content-type': 'application/json'
+      }
+    });
+    // .then(res =>
+    //   !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
+    // );
   },
   adoptDog() {
-    return fetch(`${config.API_ENDPOINT}/dogs`, {
+    return fetch(`${config.API_ENDPOINT}/pets/dogs`, {
       method: 'DELETE',
       headers: {
-        'content-type': 'application/json',
-      },
+        'content-type': 'application/json'
+      }
     }).then(res =>
       !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
     );
@@ -25,8 +26,8 @@ const adoptionApiService = {
     return fetch(`${config.API_ENDPOINT}/humans`, {
       method: 'GET',
       headers: {
-        'content-type': 'application/json',
-      },
+        'content-type': 'application/json'
+      }
     }).then(res =>
       !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
     );
@@ -35,8 +36,8 @@ const adoptionApiService = {
     return fetch(`${config.API_ENDPOINT}/pets/all`, {
       method: 'GET',
       headers: {
-        'content-type': 'application/json',
-      },
+        'content-type': 'application/json'
+      }
     }).then(res =>
       !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
     );
@@ -45,8 +46,8 @@ const adoptionApiService = {
     return fetch(`${config.API_ENDPOINT}/humans/all`, {
       method: 'GET',
       headers: {
-        'content-type': 'application/json',
-      },
+        'content-type': 'application/json'
+      }
     }).then(res =>
       !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
     );
@@ -55,12 +56,12 @@ const adoptionApiService = {
     return fetch(`${config.API_ENDPOINT}/humans`, {
       method: 'POST',
       headers: {
-        'content-type': 'application/json',
+        'content-type': 'application/json'
       },
-      body: JSON.stringify({ name }),
+      body: JSON.stringify({ name })
     }).then(res =>
       !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
     );
-  },
+  }
 };
 export default adoptionApiService;

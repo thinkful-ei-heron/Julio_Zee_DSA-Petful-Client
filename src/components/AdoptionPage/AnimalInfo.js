@@ -3,18 +3,19 @@ import './AnimalInfo.css';
 
 export default class AnimalInfo extends Component {
   render() {
+    let { onImageClick, animal } = this.props;
     return (
       <div>
         <div className="animal__Card">
           <img
-            src={this.props.animal.imageURL}
-            alt={this.props.animal.imageDesc}
-            onClick={() => this.props.onImageClick(this.props.animal)}
+            src={animal.imageURL}
+            alt={animal.imageDesc}
+            onClick={() => onImageClick(animal)}
           ></img>
-          <h2>{this.props.animal.name}</h2>
-          <p>{this.props.animal.sex}</p>
-          <p>{this.props.animal.age} Years Old</p>
-          <p>{this.props.animal.story}</p>
+          <h2>{animal.name}</h2>
+          <p>{animal.sex}</p>
+          <p>{animal.age} Years Old</p>
+          <p>{animal.story}</p>
         </div>
       </div>
     );

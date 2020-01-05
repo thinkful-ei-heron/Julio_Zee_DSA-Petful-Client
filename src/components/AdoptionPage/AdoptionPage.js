@@ -3,7 +3,6 @@ import adoptionApiService from '../../services/adoption-api-service';
 import { Link } from 'react-router-dom';
 import AdoptionForm from '../AdoptionForm/AdoptionForm';
 import AnimalInfo from './AnimalInfo';
-import './AdoptionPage.css';
 
 export default class AdoptionPage extends Component {
   state = {
@@ -12,7 +11,7 @@ export default class AdoptionPage extends Component {
     currentDog: {},
     currentCat: {},
     currentDogForAdoption: {},
-    currentCatForAdoption: {},
+    currentCatForAdoption: {}
   };
 
   updateState = () => {
@@ -28,7 +27,7 @@ export default class AdoptionPage extends Component {
       currentDog: data.dogQueue.first.data,
       currentCat: data.catQueue.first.data,
       currentDogForAdoption: data.dogQueue.last.data,
-      currentCatForAdoption: data.catQueue.last.data,
+      currentCatForAdoption: data.catQueue.last.data
     });
   }
 
@@ -47,26 +46,17 @@ export default class AdoptionPage extends Component {
 
   render() {
     let {
-      listOfCats,
-      listOfDogs,
       currentCat,
       currentDog,
       currentCatForAdoption,
-      currentDogForAdoption,
+      currentDogForAdoption
     } = this.state;
     return (
       <>
         <div className="animal__page">
-          <p>Current Dog waiting to be adopted : </p>
+          <p>Current Cat you can Adopt Today! : </p>
           <AnimalInfo
-            animal={currentDog}
-            onImageClick={this.props.onImageClick}
-          />
-        </div>
-        <div>
-          <p>Current Cat waiting to be adopted : </p>
-          <AnimalInfo
-            animal={currentCat}
+            animal={currentCatForAdoption}
             onImageClick={this.props.onImageClick}
           />
         </div>
@@ -74,15 +64,16 @@ export default class AdoptionPage extends Component {
           <p>Current Dog you can Adopt! : </p>
           <AnimalInfo
             animal={currentDogForAdoption}
-            onImageClick={(this.props.onImageClick, currentDogForAdoption)}
+            onImageClick={this.props.onImageClick}
           />
         </div>
         <div>
-          <p>Current Cat you can Adopt Today! : </p>
-          <AnimalInfo
-            animal={currentCatForAdoption}
-            onImageClick={this.props.onImageClick}
-          />
+          <p>Current Cat waiting for adoption : </p>
+          <AnimalInfo animal={currentCat} onImageClick={() => {}} />
+        </div>
+        <div>
+          <p>Current Dog waiting for adoption : </p>
+          <AnimalInfo animal={currentDog} onImageClick={() => {}} />
         </div>
       </>
     );

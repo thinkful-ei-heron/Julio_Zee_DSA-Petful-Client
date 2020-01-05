@@ -4,8 +4,7 @@ import Header from './components/Header/Header';
 import { Route, Switch } from 'react-router-dom';
 import LandingRoute from './routes/LandingRoute/LandingRoute';
 import AdoptionRoute from './routes/AdoptionRoute/AdoptionRoute';
-import AdoptionFormRoute from './routes/AdoptionRoute/AdoptionFormRoute';
-
+import SuccessRoute from './routes/SuccessRoute/SuccessRoute';
 export default class App extends Component {
   render() {
     return (
@@ -19,8 +18,9 @@ export default class App extends Component {
             <Route exact path={'/adopt'} component={AdoptionRoute}></Route>
             <Route
               path={'/adopt/form/:animalId'}
-              renderer={props => <AdoptionFormRoute {...props} />}
+              renderer={props => <SuccessRoute {...props} />}
             ></Route>
+            <Route exact path={'/success'} component={SuccessRoute} />
           </Switch>
         </main>
         <footer></footer>
